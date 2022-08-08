@@ -1,22 +1,18 @@
-fn largest(list: &[i32]) -> i32 {
-    let mut largest = list[0];
+use std::fmt::Display;
 
-    for &item in list {
-        if item > largest {
-            largest = item;
-        }
+fn longest_with_an_annoucement<'a, T: Display>(x: &'a str, y: &'a str, ann: T) -> &'a str {
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
     }
-
-    return largest;
 }
 
 fn main() {
-    let num_list = vec![1, 2, 34, 5, 6];
-    let result = largest(&num_list);
+    let a = "The quick brown fox jumps over the lazy dog";
+    let b = "The quick brown fox jumps over the lazy dog1";
 
-    println!("The largest number is {}", result);
-    let number_list = vec![102, 34, 6000, 89, 54, 2, 43, 8];
-
-    let result = largest(&number_list);
-    println!("The largest number is {}", result);
+    let c = longest_with_an_annoucement(a, b, "The quick brown fox jumps over the lazy");
+    println!("Longes: {}", c);
 }
