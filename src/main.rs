@@ -1,18 +1,7 @@
-use std::fmt::Display;
-
-fn longest_with_an_annoucement<'a, T: Display>(x: &'a str, y: &'a str, ann: T) -> &'a str {
-    println!("Announcement! {}", ann);
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
-}
-
 fn main() {
-    let a = "The quick brown fox jumps over the lazy dog";
-    let b = "The quick brown fox jumps over the lazy dog1";
+    let v1: Vec<i32> = vec![1, 2, 3];
 
-    let c = longest_with_an_annoucement(a, b, "The quick brown fox jumps over the lazy");
-    println!("Longes: {}", c);
+    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+
+    assert_eq!(v2, vec![2, 3, 4]);
 }
