@@ -1,7 +1,26 @@
+use std::ops::Deref;
+
+impl<T> Deref for MyBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &T {
+        &self.0
+    }
+}
+
+struct MyBox<T>(T);
+
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
+}
+
+fn hello(name: &str) {
+    println!("Hello, {}!", name);
+}
+
 fn main() {
-    let v1: Vec<i32> = vec![1, 2, 3];
-
-    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
-
-    assert_eq!(v2, vec![2, 3, 4]);
+    let m = MyBox::new(String::from("Rust"));
+    hello(&m);
 }
